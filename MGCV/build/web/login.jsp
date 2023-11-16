@@ -5,16 +5,25 @@
     String username = request.getParameter("name");
     String psw = request.getParameter("psw");
     String qry ="SELECT * FROM login WHERE username='" + username + "' AND password='" + psw + "'";
-    Vector v = db.getData(stmt,qry,10,1);
+    Vector v = db.getData(stmt,qry,100,1);
+    if(v.contains(username) && v.contains(psw)) {
     String name = (String)v.get(1);
     String pass = (String)v.get(2);
 
      if(username.equals(name) && psw.equals(pass))
         {
-            out.println("login Successful");
+            String targetURL = "classtt.jsp";
+            response.sendRedirect(targetURL);
         }
-        else
-             out.println("login failure");
-     
+    }
+     else {
+        
+             %>
+        <script type="text/javascript">
+            alert("Login Failure. Please try again.");
+            window.location.href = "index.html";
+        </script>
+<%
+     }
     db.close();
 %>

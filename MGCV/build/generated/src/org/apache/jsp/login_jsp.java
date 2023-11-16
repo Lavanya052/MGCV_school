@@ -102,62 +102,30 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
 
     String username = request.getParameter("name");
     String psw = request.getParameter("psw");
-    
-      out.write("\n");
-      out.write("<!DOCTYPE html>\n");
-      out.write("<html lang=\"en\">\n");
-      out.write("\t<head>\n");
-      out.write("\t\t<meta charset=\"UTF-8\" />\n");
-      out.write("\t\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n");
-      out.write("\t\t<title>Login</title>\n");
-      out.write("\t\t<link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\" />\n");
-      out.write("\t</head>\n");
-      out.write("\t<body>\n");
-      out.write("\t\t<div class=\"container\">\n");
-      out.write("\t\t\t<span class=\"bg-filter\"></span>\n");
-      out.write("\t\t\t<span class=\"bg-filter\"></span>\n");
-      out.write("\t\t\t<span class=\"bg-filter\"></span>\n");
-      out.write("\t\t\t<form action=\"login.jsp\" method=\"post\">\n");
-      out.write("\t\t\t\t<h2>Login</h2>\n");
-      out.write("\t\t\t\t<div class=\"inputBox\">\n");
-      out.write("\t\t\t\t\t<input type=\"text\" name=\"name\" required />\n");
-      out.write("\t\t\t\t\t<span>UserName</span>\n");
-      out.write("\t\t\t\t\t<i></i>\n");
-      out.write("\t\t\t\t</div>\n");
-      out.write("\t\t\t\t<div class=\"inputBox\">\n");
-      out.write("\t\t\t\t\t<input type=\"password\" name=\"psw\" required />\n");
-      out.write("\t\t\t\t\t<span>Password</span>\n");
-      out.write("\t\t\t\t\t<i></i>\n");
-      out.write("\t\t\t\t</div>\n");
-      out.write("                \n");
-      out.write("\t\t\t\t<input type=\"submit\" value=\"Login\" />\n");
-      out.write("\t\t\t</form>\n");
-      out.write("                        ");
-String qry = "select * from login";
-    Vector v = db.getData(stmt,qry,10,1);
-    int nr = db.getRows(v);
-    int nc = db.getCols(v);
-    int flag=0;
-    for(int i=0;i<nr*nc;i+=nc)
-    {
-        String name = (String)v.get(i);
-        String pass = (String)v.get(i+1);
-        if(username.equals(name) && psw.equals(pass))
+    String qry ="SELECT * FROM login WHERE username='" + username + "' AND password='" + psw + "'";
+    Vector v = db.getData(stmt,qry,100,1);
+    if(v.contains(username) && v.contains(psw)) {
+    String name = (String)v.get(1);
+    String pass = (String)v.get(2);
+
+     if(username.equals(name) && psw.equals(pass))
         {
-            flag = 1;
-            break;
+            String targetURL = "classtt.jsp";
+            response.sendRedirect(targetURL);
         }
     }
-    if(flag==1)
-        out.println("Login Successful as "+username);
-    else
-        out.println("Login Failure");
+     else {
+        
+             
+      out.write("\n");
+      out.write("        <script type=\"text/javascript\">\n");
+      out.write("            alert(\"Login Failure. Please try again.\");\n");
+      out.write("            window.location.href = \"index.html\";\n");
+      out.write("        </script>\n");
+
+     }
     db.close();
 
-      out.write("\n");
-      out.write("\t\t</div>\n");
-      out.write("\t</body>\n");
-      out.write("</html>");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;

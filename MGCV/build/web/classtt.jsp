@@ -1,4 +1,6 @@
 <%@ page import="java.util.*,java.io.*,java.sql.*,java.lang.*" %>
+<% String file = "classtt"; %> 
+<%@ include file="mgcvdb.jsp"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -69,30 +71,30 @@
     </style>
 </head>
 <body>
+    <% try { %>
 <div class="wrapper">
     <div class="sidebar">
         <h2>Sidebar</h2>
         <ul>
             <li><a href="classtt.jsp"><i class=" fas classtt"></i>Class TT</a></li>
-            <li><a href="teachertt.jsp"><i class="fas teachertt"></i>Teacher</a></li>
-            <li><a href="subjecttt.jsp"><i class="fas subjecttt"></i>Subject</a></li>      
+            <li><a href="teachertt.jsp"><i class="fas teachertt"></i>Teacher</a></li>   
         </ul> 
        
     </div>
 </div>
    <div style="margin-left:15%;padding:14px 16px;height:100px;">
-       <h2 style='text-align:center'>Mahatma Gandhi Centenary Vidyalaya School</h2><br><br>
-    <h3 style='text-align:center'>TIME TABLE</h3>
+       <h2 style='text-align:center'>Mahatma Gandhi Centenary Vidyalaya</h2><br><br>
+    <h3 style='text-align:center'>CLASS TIME TABLE</h3>
     <br><br><br>
     
     &nbsp;
     &nbsp;
-    <form action="#" method="get">
+    <form action="classtt.jsp" method="get">
         <label for="class">Select Class:</label>
         <select name="class" id="class">
              <option value="">Select</option>
-            <option value="10">10</option>
             <option value="9">9</option>
+            <option value="10">10</option>
         </select>
     &nbsp;
     &nbsp;
@@ -102,15 +104,20 @@
             <option value="A">A</option>
             <option value="B">B</option>
             <option value="C">C</option>
-            <option value="D">D</option>
         </select>
 &nbsp;
 &nbsp;
 &nbsp;
 &nbsp;
-        <input type="submit" value="Show Timetable">
+        <input type="submit" value="Show Timetable" name="submit">
     </form><br><br>
-
+    <%
+            String cls = request.getParameter("class");
+            String sec = request.getParameter("section");
+            if(request.getParameter("submit")!= null)
+            {
+                    
+    %>
     <table>
         <tr>
             <th>Day order/period</th>
@@ -120,55 +127,78 @@
             <th>7<br>(time)</th><th>8<br>(time)</th>  
         </tr>
         <tr>
-            <td>1</td>
-            <td>Tamil/Hindi</td><td>Engilsh</td>
-            <td>PET</td><td>Maths</td>
-            <td>Science</td><td>Maths</td>
-            <td>Social</td><td>computer</td>
+            <td>1</td><%
+                     String qry = "select subcode from timetable where cls='"+cls+"' and sec='"+sec+"' and dayorder='1'";
+                     Vector v = db.getData(stmt,qry,8,1);
+            %>
+            <td><%=v.get(1)%></td><td><%=v.get(2)%></td>
+            <td><%=v.get(3)%></td><td><%=v.get(4)%></td>
+            <td><%=v.get(5)%></td><td><%=v.get(6)%></td>
+            <td><%=v.get(7)%></td><td><%=v.get(8)%></td>
             
-        </tr>
+        </tr> 
         <tr>
             <td>2</td>
-            <td>Tamil/Hindi</td><td>Engilsh</td>
-            <td>PET</td><td>Maths</td>
-            <td>Science</td><td>Maths</td>
-            <td>Social</td><td>computer</td>
+            <%
+                     qry = "select subcode from timetable where cls='"+cls+"' and sec='"+sec+"' and dayorder='2'";
+                     v = db.getData(stmt,qry,8,1);
+            %>
+            <td><%=v.get(1)%></td><td><%=v.get(2)%></td>
+            <td><%=v.get(3)%></td><td><%=v.get(4)%></td>
+            <td><%=v.get(5)%></td><td><%=v.get(6)%></td>
+            <td><%=v.get(7)%></td><td><%=v.get(8)%></td>
             
-        </tr>
+        </tr> 
         <tr>
             <td>3</td>
-            <td>Tamil/Hindi</td><td>Engilsh</td>
-            <td>PET</td><td>Maths</td>
-            <td>Science</td><td>Maths</td>
-            <td>Social</td><td>computer</td>
+            <%
+                    qry = "select subcode from timetable where cls='"+cls+"' and sec='"+sec+"' and dayorder='3'";
+                    v = db.getData(stmt,qry,8,1);
+            %>
+            <td><%=v.get(1)%></td><td><%=v.get(2)%></td>
+            <td><%=v.get(3)%></td><td><%=v.get(4)%></td>
+            <td><%=v.get(5)%></td><td><%=v.get(6)%></td>
+            <td><%=v.get(7)%></td><td><%=v.get(8)%></td>
             
-        </tr>
+        </tr> 
         <tr>
             <td>4</td>
-            <td>Tamil/Hindi</td><td>Engilsh</td>
-            <td>PET</td><td>Maths</td>
-            <td>Science</td><td>Maths</td>
-            <td>Social</td><td>computer</td>
+            <%
+                    qry = "select subcode from timetable where cls='"+cls+"' and sec='"+sec+"' and dayorder='4'";
+                    v = db.getData(stmt,qry,8,1);
+            %>
+            <td><%=v.get(1)%></td><td><%=v.get(2)%></td>
+            <td><%=v.get(3)%></td><td><%=v.get(4)%></td>
+            <td><%=v.get(5)%></td><td><%=v.get(6)%></td>
+            <td><%=v.get(7)%></td><td><%=v.get(8)%></td>
             
         </tr><tr>
             <td>5</td>
-            <td>Tamil/Hindi</td><td>Engilsh</td>
-            <td>PET</td><td>Maths</td>
-            <td>Science</td><td>Maths</td>
-            <td>Social</td><td>computer</td>
+            <%
+                    qry = "select subcode from timetable where cls='"+cls+"' and sec='"+sec+"' and dayorder='5'";
+                    v = db.getData(stmt,qry,8,1);
+            %>
+            <td><%=v.get(1)%></td><td><%=v.get(2)%></td>
+            <td><%=v.get(3)%></td><td><%=v.get(4)%></td>
+            <td><%=v.get(5)%></td><td><%=v.get(6)%></td>
+            <td><%=v.get(7)%></td><td><%=v.get(8)%></td>
             
         </tr>
         <tr>
             <td>6</td>
-            <td>Tamil/Hindi</td><td>Engilsh</td>
-            <td>PET</td><td>Maths</td>
-            <td>Science</td><td>Maths</td>
-            <td>Social</td><td>computer</td>
+            <%
+                    qry = "select subcode from timetable where cls='"+cls+"' and sec='"+sec+"' and dayorder='6'";
+                    v = db.getData(stmt,qry,10,1);
+            %>
+            <td><%=v.get(1)%></td><td><%=v.get(2)%></td>
+            <td><%=v.get(3)%></td><td><%=v.get(4)%></td>
+            <td><%=v.get(5)%></td><td><%=v.get(6)%></td>
+            <td><%=v.get(7)%></td><td><%=v.get(8)%></td>
             
         </tr>
-        
-        
     </table>
+            <% } 
+         }catch(Exception e){System.out.println(e);} %>
    </div>
 </body>
 </html>

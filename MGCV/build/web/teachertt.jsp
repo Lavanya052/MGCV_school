@@ -85,14 +85,29 @@
     
 &nbsp;
         &nbsp;
+        
     <form action="#" method="get">
         &nbsp;
         &nbsp;
         <label for="teacher">Select Teacher:</label>
         <select name="teacher" id="teacher">
-	    <option value="">Select</option>
-            <option value="Ram">Ram</option>
-            <option value="SOm">Som</option>
+	    <option value="ambika">Select</option>
+            <option value="" name=""></option>
+            <option value="" name=""></option>
+            <option value="" name=""></option>
+            <option value="" name=""></option>
+            <option value="" name=""></option>
+            <option value="" name=""></option>
+            <option value="" name=""></option>
+            <option value="" name=""></option>
+            <option value="" name=""></option>
+            <option value="" name=""></option>
+            <option value="" name=""></option>
+            <option value="" name=""></option>
+            <option value="" name=""></option>
+            <option value="" name=""></option>
+            
+            
         </select>
         &nbsp;
         &nbsp;
@@ -100,10 +115,15 @@
         &nbsp;&nbsp;
         &nbsp;
         
-        <input type="submit" value="Show Timetable">
+        <input type="submit" value="Show Timetable" name="submit">
+        <%
+            String teachername = request.getParameter("teacher");
+            if(request.getParameter("submit")!=null)
+            {
+            %>
     </form><br><br>
 
-
+    <h2><%out.println("Teacher Name: "+teachername);%></h2>
     <table>
         <tr>
             <th>Day/period</th>
@@ -162,6 +182,7 @@
             
         </tr>
     </table>
+    <% }%>
    </div>
 </body>
 </html>
