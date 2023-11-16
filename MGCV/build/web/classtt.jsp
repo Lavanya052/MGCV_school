@@ -1,3 +1,4 @@
+<%@ page import="java.util.*,java.io.*,java.sql.*,java.lang.*" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -84,8 +85,8 @@
     <h3 style='text-align:center'>TIME TABLE</h3>
     <br><br><br>
     
-&nbsp;
-        &nbsp;
+    &nbsp;
+    &nbsp;
     <form action="#" method="get">
         <label for="class">Select Class:</label>
         <select name="class" id="class">
@@ -93,8 +94,8 @@
             <option value="10">10</option>
             <option value="9">9</option>
         </select>
-&nbsp;
-        &nbsp;
+    &nbsp;
+    &nbsp;
         <label for="section">Select Section:</label>
         <select name="section" id="section">
             <option value="">Select</option>
@@ -104,19 +105,68 @@
             <option value="D">D</option>
         </select>
 &nbsp;
-        &nbsp;&nbsp;
-        &nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
         <input type="submit" value="Show Timetable">
     </form><br><br>
 
     <table>
         <tr>
-            <th>Day/period</th>
+            <th>Day order/period</th>
             <th>1<br>(time)</th><th>2<br>(time)</th>
             <th>3<br>(time)</th><th>4<br>(time)</th>
             <th>5<br>(time)</th><th>6<br>(time)</th>
             <th>7<br>(time)</th><th>8<br>(time)</th>  
         </tr>
+        <tr>
+            <td>1</td>
+            <td>Tamil/Hindi</td><td>Engilsh</td>
+            <td>PET</td><td>Maths</td>
+            <td>Science</td><td>Maths</td>
+            <td>Social</td><td>computer</td>
+            
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Tamil/Hindi</td><td>Engilsh</td>
+            <td>PET</td><td>Maths</td>
+            <td>Science</td><td>Maths</td>
+            <td>Social</td><td>computer</td>
+            
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Tamil/Hindi</td><td>Engilsh</td>
+            <td>PET</td><td>Maths</td>
+            <td>Science</td><td>Maths</td>
+            <td>Social</td><td>computer</td>
+            
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>Tamil/Hindi</td><td>Engilsh</td>
+            <td>PET</td><td>Maths</td>
+            <td>Science</td><td>Maths</td>
+            <td>Social</td><td>computer</td>
+            
+        </tr><tr>
+            <td>5</td>
+            <td>Tamil/Hindi</td><td>Engilsh</td>
+            <td>PET</td><td>Maths</td>
+            <td>Science</td><td>Maths</td>
+            <td>Social</td><td>computer</td>
+            
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>Tamil/Hindi</td><td>Engilsh</td>
+            <td>PET</td><td>Maths</td>
+            <td>Science</td><td>Maths</td>
+            <td>Social</td><td>computer</td>
+            
+        </tr>
+        
         
     </table>
    </div>

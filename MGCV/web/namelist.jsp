@@ -28,8 +28,8 @@
 		
                 String query = "select * from teacher"; 
                 Vector v =db.getData(stmt,query,500,1);
-                int nr = db.getRows(v);// 
-                int nc =db.getCols(v);//3 
+                int nr = db.getRows(v);
+                int nc = db.getCols(v); 
 db.close(); 
                 %>
 

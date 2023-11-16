@@ -62,7 +62,8 @@
         }
 
         th {
-            background-color: #f2f2f2;
+            background-color: lightskyblue;
+            color: #fff;
         }
     </style>
 </head>
@@ -111,7 +112,55 @@
             <th>5<br>(time)</th><th>6<br>(time)</th>
             <th>7<br>(time)</th><th>8<br>(time)</th>  
         </tr>
-        
+         <tr>
+            <td>1</td>
+            <td>-</td><td>10-A</td>
+            <td>9-B</td><td>8-D</td>
+            <td>-</td><td>-</td>
+            <td>7-B</td><td>10-A</td>
+            
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>7-B</td><td>10-A</td>
+            <td>-</td><td>10-A</td>
+            <td>9-B</td><td>8-D</td>
+            <td>-</td><td>-</td>
+            
+            
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>-</td><td>10-A</td>
+            <td>-</td><td>-</td>
+            <td>7-B</td><td>10-A</td>
+            <td>9-B</td><td>8-D</td>
+            
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>9-B</td><td>8-D</td>
+            <td>7-B</td><td>10-A</td>
+            <td>-</td><td>10-A</td>
+            <td>-</td><td>-</td>
+            
+        </tr><tr>
+            <td>5</td>
+            <td>-</td><td>10-A</td>
+            <td>-</td><td>-</td>
+            <td>9-B</td><td>8-D</td>
+            <td>7-B</td><td>10-A</td>
+            
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>-</td><td>10-A</td>
+            <td>7-B</td><td>10-A</td>
+            <td>9-B</td><td>8-D</td>
+            <td>-</td><td>-</td>
+            
+            
+        </tr>
     </table>
    </div>
 </body>
