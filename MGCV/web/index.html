@@ -4,28 +4,35 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Login</title>
-                <link rel="stylesheet" type="text/css" href="style.css" />
+        <link rel="icon" type="image/jpg" href="logo.jpg"/>
+		<link rel="stylesheet" type="text/css" href="style.css" />
 	</head>
 	<body>
-		<div class="container">
-			<span class="bg-filter"></span>
-			<span class="bg-filter"></span>
-			<span class="bg-filter"></span>
-			<form action="login.jsp" method="post">
-				<h2>Login</h2>
-				<div class="inputBox">
-					<input type="text" name="name" required />
-					<span>UserName</span>
-					<i></i>
-				</div>
-				<div class="inputBox">
-					<input type="password" name="psw" required />
-					<span>Password</span>
-					<i></i>
-				</div>
-                
-				<input type="submit" value="Login" />
-			</form>
-		</div>
+        <div class="h-box">
+            <div class="logo-container">
+                <img src="logo1.jpg" alt="logo">
+                <span id="slogan">Igniting minds, empowering dreams.</span>
+            </div>
+            <div class="container">
+                <span class="bg-filter"></span>
+                <span class="bg-filter"></span>
+                <span class="bg-filter"></span>
+                <form action="login.jsp" method="post">
+                    <h2>Login</h2>
+                    <div class="inputBox">
+                        <input type="text" name="name" autocomplete="off" required />
+                        <span>UserName</span>
+                        <i></i>
+                    </div>
+                    <div class="inputBox">
+                        <input type="password" name="psw" required />
+                        <span>Password</span>
+                        <i></i>
+                    </div>
+    
+                    <input type="submit" value="Login" />
+                </form>
+            </div>
+        </div>
 	</body>
 </html>

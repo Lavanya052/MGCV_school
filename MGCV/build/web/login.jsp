@@ -12,7 +12,7 @@
 
      if(username.equals(name) && psw.equals(pass))
         {
-            String targetURL = "classtt.jsp";
+            String targetURL = "dashboard.html";
             response.sendRedirect(targetURL);
         }
     }
