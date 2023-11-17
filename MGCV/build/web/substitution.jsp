@@ -1,5 +1,5 @@
 <%@ page import="java.util.*,java.io.*,java.sql.*,java.lang.*" %>
-<% String file = "classtt";%> 
+<% String file = "substitution";%> 
 <%@ include file="mgcvdb.jsp"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -94,6 +94,13 @@
                 background-color: #fff;
                 width: fit-content;
             }
+            .content table select {
+                font-size: large;
+                padding: 5px;
+                border-radius: 5px;
+                background-color: #fff;
+                width: fit-content;
+            }
 
             .content form input[type="submit"] {
                 border: none;
@@ -106,6 +113,24 @@
             }
 
             .content form input[type="submit"]:hover {
+                background-color: #1074d8;
+                color: aliceblue;
+            }
+            .content button {
+                border: none;
+                outline: none;
+                padding: 9px 25px;
+                cursor: pointer;
+                font-size: medium;
+                border-radius: 5px;
+                margin-top: 40px;
+                width: 10%;
+                position: center;
+                margin-left: 45%;
+                background-color: rgb(74, 177, 242);
+                color: #fff;
+            }
+            .content button:hover {
                 background-color: #1074d8;
                 color: aliceblue;
             }
@@ -163,10 +188,10 @@
                 <h2>MGCV</h2>
                 <ul>
                     <li>
-			<a href="classtt.jsp"><i class="fas classtt"></i>Class TT</a>
+                        <a href="classtt.jsp"><i class="fas classtt"></i>Class TT</a>
                     </li>
                     <li>
-			<a href="teachertt.jsp"><i class="fas teachertt"></i>Teacher</a>
+                        <a href="teachertt.jsp"><i class="fas teachertt"></i>Teacher</a>
                     </li>
                     <li>
                         <a href="substitution.jsp"><i class="fas substitution"></i>Substitution</a>
@@ -193,34 +218,54 @@
                 </div>
                 &nbsp; &nbsp;
                 <h3 style="text-align: center; margin: 1vh 0">
-                    CLASS TIME TABLE
+                    TEACHER SUBSTITUTION
                 </h3>
-                <form action="classtt.jsp" method="get">
-                    <label for="class">Select Class:</label>
-                    <select name="class" id="class">
-                        <option value="">Select</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                    </select>
+                <form action="substitution.jsp" method="get">
+                    <label for="teacher">Select Teacher:</label>
+        <select name="teacher" id="teacher">
+	    <option value="">Select</option>
+            <option value="Ambika V K" name="Ambika V K">Ambika V K</option>
+            <option value="Ammaponnu P" name="Ammaponnu P">Ammaponnu P</option>
+            <option value="Bharanidaran R" name="Bharanidaran R">Bharanidaran R</option>
+            <option value="Kalpana T B" name="Kalpana T">Kalpana T B</option>
+            <option value="Karthikeyini A" name="Karthikeyini A">Karthikeyini A</option>
+            <option value="Kavitha J" name="Kavitha J">Kavitha J</option>
+            <option value="Kumudini S" name="Kumudini S">Kumudini S</option>
+            <option value="Manjula" name="Manjula">Manjula</option>
+            <option value="Mangayarthilagam R" name="Mangayarthilagam R">Mangayarthilagam R</option>
+            <option value="Sangeetha M" name="Sangeetha M">Sangeetha M</option>
+            <option value="Saradha K" name="Saradha K">Saradha K</option>
+            <option value="Sangeetha S" name="Sangeetha S">Sangeetha S</option>
+            <option value="Senbagavalli D" name="Senbagavalli D">Senbagavalli D</option>
+            <option value="Suganya S" name="Suganya S">Suganya S</option>
+            <option value="Vijayalakshmi R" name="Vijayalakshmi R">Vijayalakshmi R</option>
+            <option value="Pavai K" name="Pavai K">Pavai K</option>
+            <option value="Amudha" name="Amudha">Amudha</option>
+            <option value="Balasubramani D" name="Balasubramani D">Balasubramani D</option>
+            <option value="Deepika Jayapalu" name="Deepika Jayapalu">Deepika Jayapalu</option>
+            
+            
+        </select>
                     &nbsp; &nbsp;
-                    <label for="section">Select Section:</label>
-                    <select name="section" id="section">
+                    <label for="dayorder">Select dayorder:</label>
+                    <select name="dayorder" id="dayorder">
                         <option value="">Select</option>
-                        <option value="A">A</option>
-                        <option value="B">B</option>
-                        <option value="C">C</option>
+                        <option value="1">1</option><option value="2">2</option>
+                        <option value="3">3</option><option value="4">4</option>
+                        <option value="5">5</option><option value="6">6</option>
+                        
                     </select>
                     &nbsp; &nbsp; &nbsp; &nbsp;
                     <input type="submit" value="Show Timetable" name="submit" />
                 </form>
                 <%
-                    String cls = request.getParameter("class");
-                    String sec = request.getParameter("section");
+                    String teacher = request.getParameter("teacher");
+                    String dayorder = request.getParameter("dayorder");
                     if (request.getParameter("submit") != null) {
 
                 %>
                 <div style="margin-top: 4vh">
-                    <h3 style="margin-bottom: 4vh"><%out.println("Class: " + cls + " - " + sec);%></h3>
+                    <h3 style="margin-bottom: 4vh"><%out.println("Teacher Name: "+teacher);%></h3>
                     <table>
                         <tr>
                             <th>DO.</th>
@@ -234,89 +279,39 @@
                             <th>8<br />(time)</th>
                         </tr>
                         <tr>
-                            <td>1</td> <%
-                                                            String qry = "select subcode from timetable where cls='" + cls + "' and sec='" + sec + "' and dayorder='1'";
-                                                            Vector v = db.getData(stmt, qry, 8, 1);%>
-                            <td><%=v.get(1)%></td>
-                            <td><%=v.get(2)%></td>
-                            <td><%=v.get(3)%></td>
-                            <td><%=v.get(4)%></td>
-                            <td><%=v.get(5)%></td>
-                            <td><%=v.get(6)%></td>
-                            <td><%=v.get(7)%></td>
-                            <td><%=v.get(8)%></td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <%
-                                qry = "select subcode from timetable where cls='" + cls + "' and sec='" + sec + "' and dayorder='2'";
-                                v = db.getData(stmt, qry, 8, 1);
-                            %>
-                            <td><%=v.get(1)%></td>
-                            <td><%=v.get(2)%></td>
-                            <td><%=v.get(3)%></td>
-                            <td><%=v.get(4)%></td>
-                            <td><%=v.get(5)%></td>
-                            <td><%=v.get(6)%></td>
-                            <td><%=v.get(7)%></td>
-                            <td><%=v.get(8)%></td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <%
-                                                            qry = "select subcode from timetable where cls='" + cls + "' and sec='" + sec + "' and dayorder='3'";
-                                                            v = db.getData(stmt, qry, 8, 1);%>
-                            <td><%=v.get(1)%></td>
-                            <td><%=v.get(2)%></td>
-                            <td><%=v.get(3)%></td>
-                            <td><%=v.get(4)%></td>
-                            <td><%=v.get(5)%></td>
-                            <td><%=v.get(6)%></td>
-                            <td><%=v.get(7)%></td>
-                            <td><%=v.get(8)%></td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <%
-                                                            qry = "select subcode from timetable where cls='" + cls + "' and sec='" + sec + "' and dayorder='4'";
-                                                            v = db.getData(stmt, qry, 8, 1);%>
-                            <td><%=v.get(1)%></td>
-                            <td><%=v.get(2)%></td>
-                            <td><%=v.get(3)%></td>
-                            <td><%=v.get(4)%></td>
-                            <td><%=v.get(5)%></td>
-                            <td><%=v.get(6)%></td>
-                            <td><%=v.get(7)%></td>
-                            <td><%=v.get(8)%></td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <%
-                                                            qry = "select subcode from timetable where cls='" + cls + "' and sec='" + sec + "' and dayorder='5'";
-                                                            v = db.getData(stmt, qry, 8, 1);%>
-                            <td><%=v.get(1)%></td>
-                            <td><%=v.get(2)%></td>
-                            <td><%=v.get(3)%></td>
-                            <td><%=v.get(4)%></td>
-                            <td><%=v.get(5)%></td>
-                            <td><%=v.get(6)%></td>
-                            <td><%=v.get(7)%></td>
-                            <td><%=v.get(8)%></td>
-                        </tr>
-                        <tr>
-                            <td>6</td>
-                            <%
-                                                            qry = "select subcode from timetable where cls='" + cls + "' and sec='" + sec + "' and dayorder='6'";
-                                                            v = db.getData(stmt, qry, 8, 1);%>
-                            <td><%=v.get(1)%></td>
-                            <td><%=v.get(2)%></td>
-                            <td><%=v.get(3)%></td>
-                            <td><%=v.get(4)%></td>
-                            <td><%=v.get(5)%></td>
-                            <td><%=v.get(6)%></td>
-                            <td><%=v.get(7)%></td>
-                            <td><%=v.get(8)%></td>
-                        </tr>
+                        <td><%out.println(dayorder);%></td>
+            <td>-<br><br><select></select></td>
+            <td>10-A<br><br><select name="teacher" id="teacher"><option value="">Select</option>
+            <option value="Ambika V K" name="Ambika V K">Ambika V K</option>
+            <option value="Ammaponnu P" name="Ammaponnu P">Ammaponnu P</option>
+            <option value="Bharanidaran R" name="Bharanidaran R">Bharanidaran R</option>
+            <option value="Kalpana T B" name="Kalpana T">Kalpana T B</option></select></td>
+            <td>9-B<br><br><select name="teacher" id="teacher"><option value="">Select</option>
+            <option value="Ambika V K" name="Ambika V K">Ambika V K</option>
+            <option value="Ammaponnu P" name="Ammaponnu P">Ammaponnu P</option>
+            <option value="Bharanidaran R" name="Bharanidaran R">Bharanidaran R</option>
+            <option value="Kalpana T B" name="Kalpana T">Kalpana T B</option></select></td>
+            <td>8-D<br><br><select name="teacher" id="teacher"><option value="">Select</option>
+	    <option value="Ambika V K" name="Ambika V K">Ambika V K</option>
+            <option value="Ammaponnu P" name="Ammaponnu P">Ammaponnu P</option>
+            <option value="Bharanidaran R" name="Bharanidaran R">Bharanidaran R</option>
+            <option value="Kalpana T B" name="Kalpana T">Kalpana T B</option></select></td>
+            <td>-<br><br><select></select></td>
+            <td>-<br><br><select></select></td>
+            <td>7-B<br><br><select name="teacher" id="teacher"><option value="">Select</option>
+            <option value="Ambika V K" name="Ambika V K">Ambika V K</option>
+            <option value="Ammaponnu P" name="Ammaponnu P">Ammaponnu P</option>
+            <option value="Bharanidaran R" name="Bharanidaran R">Bharanidaran R</option>
+            <option value="Kalpana T B" name="Kalpana T">Kalpana T B</option></select></td>
+            <td>10-A<br><br><select name="teacher" id="teacher"><option value="">Select</option>
+            <option value="Ambika V K" name="Ambika V K">Ambika V K</option>
+            <option value="Ammaponnu P" name="Ammaponnu P">Ammaponnu P</option>
+            <option value="Bharanidaran R" name="Bharanidaran R">Bharanidaran R</option>
+            <option value="Kalpana T B" name="Kalpana T">Kalpana T B</option></select></td>
+                    
+                      
+                    
+                    </tr>
                     </table>
                     <% }
                         } catch (Exception e) {
@@ -324,6 +319,8 @@
                         }
                     %>
                 </div>
+                <br><br>
+                <button type="submit" name="Change">Save Changes</button>
             </div>
         </div>
     </body>

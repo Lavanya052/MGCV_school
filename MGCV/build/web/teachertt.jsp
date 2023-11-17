@@ -158,16 +158,18 @@
 			<div class="sidebar">
 				<h2>MGCV</h2>
 				<ul>
-					<li>
-						<a href="classtt.jsp"
-							><i class="fas classtt"></i>Class TT</a
-						>
-					</li>
-					<li>
-						<a href="teachertt.jsp"
-							><i class="fas teachertt"></i>Teacher</a
-						>
-					</li>
+				<li>
+					<a href="classtt.jsp"><i class="fas classtt"></i>Class TT</a>
+				</li>
+				<li>
+					<a href="teachertt.jsp"><i class="fas teachertt"></i>Teacher</a>
+				</li>
+                                <li>
+                                        <a href="substitution.jsp"><i class="fas substitution"></i>Substitution</a>
+                                </li>
+                                <li>
+                                        <a href="index.html"><i class="fas index"></i>Logout</a>
+                                </li>
 				</ul>
 			</div>
 		</div>
@@ -187,7 +189,7 @@
                 </div>
                 &nbsp; &nbsp;
                 <h3 style="text-align: center; margin: 1vh 0">
-                    CLASS TIME TABLE
+                    TEACHER TIME TABLE
                 </h3>
         
     <form action="#" method="get">
