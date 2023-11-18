@@ -119,14 +119,14 @@
             .content button {
                 border: none;
                 outline: none;
-                padding: 9px 25px;
+                padding: 10px 10px;
                 cursor: pointer;
                 font-size: medium;
                 border-radius: 5px;
                 margin-top: 40px;
-                width: 10%;
+                width: 13%;
                 position: center;
-                margin-left: 45%;
+                margin-left: 40%;
                 background-color: rgb(74, 177, 242);
                 color: #fff;
             }
