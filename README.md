@@ -2,7 +2,7 @@
 
 ### Login Page
 
-![9c8746ef84e6b4ef23f7ddaeb10fe7a807c3d022](https://github.com/Lavanya052/MGCV_school/assets/83293163/5461b685-7db8-4de8-aacb-53c44be10332)
+![Login](https://github.com/Lavanya052/MGCV_school/assets/115069135/7759e0e5-49cf-435d-a5f1-1dc0c5dc0319)
 
 ### Landing Page
 
