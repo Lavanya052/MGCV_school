@@ -1,3 +1,7 @@
+<%@ page import="java.util.*,java.io.*,java.sql.*,java.lang.*" %>
+<% String file = "teachertt";%> 
+<%@ include file="mgcvdb.jsp"%>
+<!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
@@ -68,7 +72,7 @@
 			.content {
 				height: 100vh;
 				padding: 2%;
-
+                                margin-top: -10px;
 				display: flex;
 				flex-direction: column;
 			}
@@ -80,11 +84,12 @@
 			.content form {
 				font-family: "Helvetica";
 				font-size: large;
-                font-weight: bold;
+                                font-weight: bold;
+                                margin-top: -1.5vh;
 			}
 
             .content form select {
-                font-size: large;
+                font-size: 17px;
                 padding: 5px;
                 border-radius: 5px;
                 background-color: #fff;
@@ -139,7 +144,7 @@
 			}
                         
                         .widget-title {
-                font-weight: 900;
+                font-weight: 750;
                 font-size: 30px;
                 font-family: "Poppins", "Helvetica", sans-serif;
                 text-align: center;
@@ -150,23 +155,29 @@
                 font-family: "Poppins", "Helvetica", sans-serif;
                 text-align: center;
             }
+            .sidebar h2{
+                cursor: pointer;
+            }
 		</style>
 	</head>
 <body>
           
 		<div class="wrapper">
 			<div class="sidebar">
-				<h2>MGCV</h2>
+				<h2><a href="dashboard.html">MGCV</a></h2>
 				<ul>
 				<li>
 					<a href="classtt.jsp"><i class="fas classtt"></i>Class TT</a>
 				</li>
 				<li>
-					<a href="teachertt.jsp"><i class="fas teachertt"></i>Teacher</a>
+					<a href="teachertt.jsp"><i class="fas teachertt"></i>Teacher TT</a>
 				</li>
                                 <li>
                                         <a href="substitution.jsp"><i class="fas substitution"></i>Substitution</a>
                                 </li>
+                                <li>
+                        <a href="subdetails.jsp"><i class="fas subdetails"></i>Substitution Details</a>
+                    </li>
                                 <li>
                                         <a href="index.html"><i class="fas index"></i>Logout</a>
                                 </li>
@@ -187,15 +198,15 @@
                         0431 - 2792666,Email ID : office@mgcvschool.ac.in
                     </div>
                 </div>
-                &nbsp; &nbsp;
-                <h3 style="text-align: center; margin: 1vh 0">
+                            &nbsp; &nbsp;
+                <h3 style="text-align: center; margin: 1vh 0;margin-top: 3vh;">
                     TEACHER TIME TABLE
                 </h3>
         
     <form action="#" method="get">
         
-        <label for="teacher">Select Teacher:</label>
-        <select name="teacher" id="teacher">
+        <label for="teacher">Select Teacher</label>&nbsp;
+        <select name="teacher" id="teacher" required>
 	    <option value="">Select</option>
             <option value="Ambika V K" name="Ambika V K">Ambika V K</option>
             <option value="Ammaponnu P" name="Ammaponnu P">Ammaponnu P</option>
@@ -233,8 +244,8 @@
             %>
     </form><br>
 
-    <h3><%out.println("Teacher Name: "+teachername);%></h3>
-    <table>
+    <h3 style="margin-top: 1vh"><%out.println("Teacher Name: "+teachername);%></h3><br>
+    <table style="margin-top: 1vh;">
         <tr>
             <th>DO.</th>
             <th>1<br>(time)</th><th>2<br>(time)</th>
@@ -242,55 +253,23 @@
             <th>5<br>(time)</th><th>6<br>(time)</th>
             <th>7<br>(time)</th><th>8<br>(time)</th>  
         </tr>
+        <% for(int j=1;j<7;j++) { %>
          <tr>
-            <td>1</td>
-            <td>-</td><td>10-A</td>
-            <td>9-B</td><td>8-D</td>
-            <td>-</td><td>-</td>
-            <td>7-B</td><td>10-A</td>
-            
+         <td><% out.println(j); %></td>
+            <%
+                String period="";
+                for(int i=1;i<9;i++) {
+                String qry = " select cls,sec from timetable join teacher on teacher.teachermail=timetable.teachermail where teachername='"+teachername+"' and dayorder="+j+" and period="+i+"";
+                Vector v = db.getData(stmt,qry,10,1);
+                if(v.contains("0"))
+                    period="-";
+                else
+                    period = v.get(1)+" - "+(String)v.get(2);
+            %>
+            <td><%out.println(period);%></td>
+            <% } %>
         </tr>
-        <tr>
-            <td>2</td>
-            <td>7-B</td><td>10-A</td>
-            <td>-</td><td>10-A</td>
-            <td>9-B</td><td>8-D</td>
-            <td>-</td><td>-</td>
-            
-            
-        </tr>
-        <tr>
-            <td>3</td>
-            <td>-</td><td>10-A</td>
-            <td>-</td><td>-</td>
-            <td>7-B</td><td>10-A</td>
-            <td>9-B</td><td>8-D</td>
-            
-        </tr>
-        <tr>
-            <td>4</td>
-            <td>9-B</td><td>8-D</td>
-            <td>7-B</td><td>10-A</td>
-            <td>-</td><td>10-A</td>
-            <td>-</td><td>-</td>
-            
-        </tr><tr>
-            <td>5</td>
-            <td>-</td><td>10-A</td>
-            <td>-</td><td>-</td>
-            <td>9-B</td><td>8-D</td>
-            <td>7-B</td><td>10-A</td>
-            
-        </tr>
-        <tr>
-            <td>6</td>
-            <td>-</td><td>10-A</td>
-            <td>7-B</td><td>10-A</td>
-            <td>9-B</td><td>8-D</td>
-            <td>-</td><td>-</td>
-            
-            
-        </tr>
+        <% } %>
     </table>
     <% }%>
    </div>

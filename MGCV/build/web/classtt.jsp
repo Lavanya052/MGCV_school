@@ -70,9 +70,9 @@
             }
 
             .content {
+                margin-top: -10px;
                 height: 100vh;
                 padding: 2%;
-
                 display: flex;
                 flex-direction: column;
             }
@@ -85,6 +85,7 @@
                 font-family: "Helvetica";
                 font-size: large;
                 font-weight: bold;
+                margin-top: -3vh;
             }
 
             .content form select {
@@ -112,18 +113,18 @@
 
             table {
                 border-collapse: collapse;
-                width: 100%;
+                width: 105%;
                 margin: auto;
                 background-color: #fff;
                 box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
                 border-radius: 10px;
                 overflow: hidden;
-                font-size: large;
+                font-size: medium;
             }
 
             th,
             td {
-                padding: 15px;
+                padding: 10px;
                 text-align: center;
                 border-bottom: 1px solid #ddd;
                 border-right: 1px solid #ddd;
@@ -143,7 +144,7 @@
             }
             
             .widget-title {
-                font-weight: 900;
+                font-weight: 750;
                 font-size: 30px;
                 font-family: "Poppins", "Helvetica", sans-serif;
                 text-align: center;
@@ -154,22 +155,28 @@
                 font-family: "Poppins", "Helvetica", sans-serif;
                 text-align: center;
             }
+            .sidebar h2{
+                cursor: pointer;
+            }
         </style>
     </head>
     <body>
         <% try { %>
         <div class="wrapper">
             <div class="sidebar">
-                <h2>MGCV</h2>
+                <h2><a href="dashboard.html">MGCV</a></h2>
                 <ul>
                     <li>
 			<a href="classtt.jsp"><i class="fas classtt"></i>Class TT</a>
                     </li>
                     <li>
-			<a href="teachertt.jsp"><i class="fas teachertt"></i>Teacher</a>
+			<a href="teachertt.jsp"><i class="fas teachertt"></i>Teacher TT</a>
                     </li>
                     <li>
                         <a href="substitution.jsp"><i class="fas substitution"></i>Substitution</a>
+                    </li>
+                    <li>
+                        <a href="subdetails.jsp"><i class="fas subdetails"></i>Substitution Details</a>
                     </li>
                     <li>
                         <a href="index.html"><i class="fas index"></i>Logout</a>
@@ -192,19 +199,19 @@
                     </div>
                 </div>
                 &nbsp; &nbsp;
-                <h3 style="text-align: center; margin: 1vh 0">
+                <h3 style="text-align: center; margin: 1vh 0;margin-top: 1vh;">
                     CLASS TIME TABLE
                 </h3>
                 <form action="classtt.jsp" method="get">
-                    <label for="class">Select Class:</label>
-                    <select name="class" id="class">
+                    <label for="class">Select Class</label>&nbsp;
+                    <select name="class" id="class" required>
                         <option value="">Select</option>
                         <option value="9">9</option>
                         <option value="10">10</option>
                     </select>
                     &nbsp; &nbsp;
-                    <label for="section">Select Section:</label>
-                    <select name="section" id="section">
+                    <label for="section">Select Section</label>&nbsp;
+                    <select name="section" id="section" required>
                         <option value="">Select</option>
                         <option value="A">A</option>
                         <option value="B">B</option>
@@ -219,9 +226,9 @@
                     if (request.getParameter("submit") != null) {
 
                 %>
-                <div style="margin-top: 4vh">
+                <div style="margin-top: 2vh">
                     <h3 style="margin-bottom: 4vh"><%out.println("Class: " + cls + " - " + sec);%></h3>
-                    <table>
+                    <table style="margin-top: -2vh">
                         <tr>
                             <th>DO.</th>
                             <th>1<br />(time)</th>
@@ -233,91 +240,22 @@
                             <th>7<br />(time)</th>
                             <th>8<br />(time)</th>
                         </tr>
+                        <% for(int j=1;j<7;j++) { %>
                         <tr>
-                            <td>1</td> <%
-                                                            String qry = "select subcode from timetable where cls='" + cls + "' and sec='" + sec + "' and dayorder='1'";
-                                                            Vector v = db.getData(stmt, qry, 8, 1);%>
-                            <td><%=v.get(1)%></td>
-                            <td><%=v.get(2)%></td>
-                            <td><%=v.get(3)%></td>
-                            <td><%=v.get(4)%></td>
-                            <td><%=v.get(5)%></td>
-                            <td><%=v.get(6)%></td>
-                            <td><%=v.get(7)%></td>
-                            <td><%=v.get(8)%></td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <%
-                                qry = "select subcode from timetable where cls='" + cls + "' and sec='" + sec + "' and dayorder='2'";
-                                v = db.getData(stmt, qry, 8, 1);
-                            %>
-                            <td><%=v.get(1)%></td>
-                            <td><%=v.get(2)%></td>
-                            <td><%=v.get(3)%></td>
-                            <td><%=v.get(4)%></td>
-                            <td><%=v.get(5)%></td>
-                            <td><%=v.get(6)%></td>
-                            <td><%=v.get(7)%></td>
-                            <td><%=v.get(8)%></td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <%
-                                                            qry = "select subcode from timetable where cls='" + cls + "' and sec='" + sec + "' and dayorder='3'";
-                                                            v = db.getData(stmt, qry, 8, 1);%>
-                            <td><%=v.get(1)%></td>
-                            <td><%=v.get(2)%></td>
-                            <td><%=v.get(3)%></td>
-                            <td><%=v.get(4)%></td>
-                            <td><%=v.get(5)%></td>
-                            <td><%=v.get(6)%></td>
-                            <td><%=v.get(7)%></td>
-                            <td><%=v.get(8)%></td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <%
-                                                            qry = "select subcode from timetable where cls='" + cls + "' and sec='" + sec + "' and dayorder='4'";
-                                                            v = db.getData(stmt, qry, 8, 1);%>
-                            <td><%=v.get(1)%></td>
-                            <td><%=v.get(2)%></td>
-                            <td><%=v.get(3)%></td>
-                            <td><%=v.get(4)%></td>
-                            <td><%=v.get(5)%></td>
-                            <td><%=v.get(6)%></td>
-                            <td><%=v.get(7)%></td>
-                            <td><%=v.get(8)%></td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <%
-                                                            qry = "select subcode from timetable where cls='" + cls + "' and sec='" + sec + "' and dayorder='5'";
-                                                            v = db.getData(stmt, qry, 8, 1);%>
-                            <td><%=v.get(1)%></td>
-                            <td><%=v.get(2)%></td>
-                            <td><%=v.get(3)%></td>
-                            <td><%=v.get(4)%></td>
-                            <td><%=v.get(5)%></td>
-                            <td><%=v.get(6)%></td>
-                            <td><%=v.get(7)%></td>
-                            <td><%=v.get(8)%></td>
-                        </tr>
-                        <tr>
-                            <td>6</td>
-                            <%
-                                                            qry = "select subcode from timetable where cls='" + cls + "' and sec='" + sec + "' and dayorder='6'";
-                                                            v = db.getData(stmt, qry, 8, 1);%>
-                            <td><%=v.get(1)%></td>
-                            <td><%=v.get(2)%></td>
-                            <td><%=v.get(3)%></td>
-                            <td><%=v.get(4)%></td>
-                            <td><%=v.get(5)%></td>
-                            <td><%=v.get(6)%></td>
-                            <td><%=v.get(7)%></td>
-                            <td><%=v.get(8)%></td>
-                        </tr>
-                    </table>
+                        <td><% out.println(j); %></td>
+                  <%
+                for(int i=1;i<9;i++) {
+                String qry = "select subcode from timetable where cls='" + cls + "' and sec='" + sec + "' and dayorder="+j+"";
+                Vector v = db.getData(stmt, qry, 8, 1);
+                qry = "select teachername from timetable join teacher1 on timetable.teachermail=teacher1.teachermail where cls='" + cls + "' and sec='" + sec + "' and dayorder="+j+"order by period";
+                Vector vec = db.getData(stmt,qry,8,1);
+             %>
+             <td><p style="font-size: 16px;"><%=v.get(i)%></p><p style=" font-weight: bold;font-size: 14px;margin-top: 1vh;"><%=vec.get(i)%></p></td>
+            <% } %>
+        </tr>
+        <% } %>
+                        
+        </table>
                     <% }
                         } catch (Exception e) {
                             System.out.println(e);

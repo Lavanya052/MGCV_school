@@ -72,7 +72,7 @@
             .content {
                 height: 100vh;
                 padding: 2%;
-
+                margin-top: -10px;
                 display: flex;
                 flex-direction: column;
             }
@@ -85,21 +85,22 @@
                 font-family: "Helvetica";
                 font-size: large;
                 font-weight: bold;
+                margin-top: -1vh;
             }
 
             .content form select {
-                font-size: large;
+                font-size: 17px;
                 padding: 5px;
                 border-radius: 5px;
                 background-color: #fff;
                 width: fit-content;
             }
             .content table select {
-                font-size: large;
+                font-size: medium;
                 padding: 5px;
                 border-radius: 5px;
                 background-color: #fff;
-                width: fit-content;
+                width: 105%;
             }
 
             .content form input[type="submit"] {
@@ -116,17 +117,26 @@
                 background-color: #1074d8;
                 color: aliceblue;
             }
-            .content button {
-                border: none;
+            .content form input[type="date"] {
+                border: 1px solid black;
                 outline: none;
-                padding: 9px 25px;
+                padding: 5px 20px;
                 cursor: pointer;
                 font-size: medium;
                 border-radius: 5px;
                 margin-top: 40px;
-                width: 10%;
+            }
+            .content button {
+                border: none;
+                outline: none;
+                padding: 10px 10px;
+                cursor: pointer;
+                font-size: medium;
+                border-radius: 5px;
+                margin-top: 40px;
+                width: 11%;
                 position: center;
-                margin-left: 45%;
+                margin-left: 43%;
                 background-color: rgb(74, 177, 242);
                 color: #fff;
             }
@@ -168,7 +178,7 @@
             }
             
             .widget-title {
-                font-weight: 900;
+                font-weight: 750;
                 font-size: 30px;
                 font-family: "Poppins", "Helvetica", sans-serif;
                 text-align: center;
@@ -179,22 +189,28 @@
                 font-family: "Poppins", "Helvetica", sans-serif;
                 text-align: center;
             }
+            .sidebar h2{
+                cursor: pointer;
+            }
         </style>
     </head>
     <body>
         <% try { %>
         <div class="wrapper">
             <div class="sidebar">
-                <h2>MGCV</h2>
+                <h2><a href="dashboard.html">MGCV</a></h2>
                 <ul>
                     <li>
                         <a href="classtt.jsp"><i class="fas classtt"></i>Class TT</a>
                     </li>
                     <li>
-                        <a href="teachertt.jsp"><i class="fas teachertt"></i>Teacher</a>
+                        <a href="teachertt.jsp"><i class="fas teachertt"></i>Teacher TT</a>
                     </li>
                     <li>
                         <a href="substitution.jsp"><i class="fas substitution"></i>Substitution</a>
+                    </li>
+                    <li>
+                        <a href="subdetails.jsp"><i class="fas subdetails"></i>Substitution Details</a>
                     </li>
                     <li>
                         <a href="index.html"><i class="fas index"></i>Logout</a>
@@ -217,12 +233,12 @@
                     </div>
                 </div>
                 &nbsp; &nbsp;
-                <h3 style="text-align: center; margin: 1vh 0">
+                <h3 style="text-align: center; margin: 1vh 0;margin-top: 3vh;">
                     TEACHER SUBSTITUTION
                 </h3>
                 <form action="substitution.jsp" method="get">
-                    <label for="teacher">Select Teacher:</label>
-        <select name="teacher" id="teacher">
+                    <label for="teacher">Select Teacher</label>&nbsp;
+                    <select name="teacher" id="teacher" required>
 	    <option value="">Select</option>
             <option value="Ambika V K" name="Ambika V K">Ambika V K</option>
             <option value="Ammaponnu P" name="Ammaponnu P">Ammaponnu P</option>
@@ -247,8 +263,11 @@
             
         </select>
                     &nbsp; &nbsp;
-                    <label for="dayorder">Select dayorder:</label>
-                    <select name="dayorder" id="dayorder">
+                    <label for="date">Select Date</label>&nbsp;
+                    <input type="date" name="date" required />
+                    &nbsp; &nbsp; 
+                    <label for="dayorder">Select Dayorder</label>&nbsp;
+                    <select name="dayorder" id="dayorder" required>
                         <option value="">Select</option>
                         <option value="1">1</option><option value="2">2</option>
                         <option value="3">3</option><option value="4">4</option>
@@ -258,6 +277,7 @@
                     &nbsp; &nbsp; &nbsp; &nbsp;
                     <input type="submit" value="Show Timetable" name="submit" />
                 </form>
+                
                 <%
                     String teacher = request.getParameter("teacher");
                     String dayorder = request.getParameter("dayorder");
@@ -266,7 +286,8 @@
                 %>
                 <div style="margin-top: 4vh">
                     <h3 style="margin-bottom: 4vh"><%out.println("Teacher Name: "+teacher);%></h3>
-                    <table>
+                    
+                    <table style="margin-top: 5vh;">
                         <tr>
                             <th>DO.</th>
                             <th>1<br />(time)</th>
@@ -280,47 +301,65 @@
                         </tr>
                         <tr>
                         <td><%out.println(dayorder);%></td>
-            <td>-<br><br><select></select></td>
-            <td>10-A<br><br><select name="teacher" id="teacher"><option value="">Select</option>
-            <option value="Ambika V K" name="Ambika V K">Ambika V K</option>
-            <option value="Ammaponnu P" name="Ammaponnu P">Ammaponnu P</option>
-            <option value="Bharanidaran R" name="Bharanidaran R">Bharanidaran R</option>
-            <option value="Kalpana T B" name="Kalpana T">Kalpana T B</option></select></td>
-            <td>9-B<br><br><select name="teacher" id="teacher"><option value="">Select</option>
-            <option value="Ambika V K" name="Ambika V K">Ambika V K</option>
-            <option value="Ammaponnu P" name="Ammaponnu P">Ammaponnu P</option>
-            <option value="Bharanidaran R" name="Bharanidaran R">Bharanidaran R</option>
-            <option value="Kalpana T B" name="Kalpana T">Kalpana T B</option></select></td>
-            <td>8-D<br><br><select name="teacher" id="teacher"><option value="">Select</option>
-	    <option value="Ambika V K" name="Ambika V K">Ambika V K</option>
-            <option value="Ammaponnu P" name="Ammaponnu P">Ammaponnu P</option>
-            <option value="Bharanidaran R" name="Bharanidaran R">Bharanidaran R</option>
-            <option value="Kalpana T B" name="Kalpana T">Kalpana T B</option></select></td>
-            <td>-<br><br><select></select></td>
-            <td>-<br><br><select></select></td>
-            <td>7-B<br><br><select name="teacher" id="teacher"><option value="">Select</option>
-            <option value="Ambika V K" name="Ambika V K">Ambika V K</option>
-            <option value="Ammaponnu P" name="Ammaponnu P">Ammaponnu P</option>
-            <option value="Bharanidaran R" name="Bharanidaran R">Bharanidaran R</option>
-            <option value="Kalpana T B" name="Kalpana T">Kalpana T B</option></select></td>
-            <td>10-A<br><br><select name="teacher" id="teacher"><option value="">Select</option>
-            <option value="Ambika V K" name="Ambika V K">Ambika V K</option>
-            <option value="Ammaponnu P" name="Ammaponnu P">Ammaponnu P</option>
-            <option value="Bharanidaran R" name="Bharanidaran R">Bharanidaran R</option>
-            <option value="Kalpana T B" name="Kalpana T">Kalpana T B</option></select></td>
-                    
-                      
-                    
+            <%
+                String date = request.getParameter("date");
+                String period="";
+                for(int i=1;i<9;i++) {
+                String qry = " select cls,sec from timetable join teacher on teacher.teachermail=timetable.teachermail where teachername='"+teacher+"' and dayorder="+dayorder+" and period="+i+"";
+                Vector v = db.getData(stmt,qry,10,1);
+                if(v.contains("0"))
+                    period="-";
+                else 
+                    period = v.get(1)+" - "+(String)v.get(2);
+            %>
+            <td><%out.println(period);
+             if (period!="-"){ 
+             qry = "SELECT teachername FROM timetable join teacher on timetable.teachermail=teacher.teachermail WHERE dayorder="+dayorder+" and period="+i+"and cls='10'";
+             ResultSet rs = stmt.executeQuery(qry);
+             Vector<String> name = new Vector<String>();
+             while(rs.next())
+                 name.add(rs.getString(1));
+             qry = "SELECT teachername FROM timetable join teacher on timetable.teachermail=teacher.teachermail WHERE dayorder="+dayorder+" and period="+i+"and cls='9'";
+             rs = stmt.executeQuery(qry);
+             while(rs.next())
+                  name.add(rs.getString(1));
+             qry = "select teachername from teacher";
+             Vector list = db.getData(stmt,qry,25,1);
+             Vector<String> namelist = new Vector<String>(); 
+             for(int k=1;k<list.size();k++)
+             {
+                 if(!(name.contains(list.get(k))))
+                    namelist.add((String)list.get(k)); 
+             } %>
+             <br><br>
+             <form action="sub.jsp" method="post">
+             <select name="sub" id="teacher"><option value="">Select</option>
+            <% for(int k=1;k<namelist.size()-1;k++)
+             {%>
+                 
+                     <option value="<%=namelist.get(k)%>"><%=namelist.get(k)%></option>
+         <%    }
+         
+            }} %></td>
+             <%
+             
+    session.setAttribute("date",date);
+    session.setAttribute("actual", request.getParameter("teacher"));
+    session.setAttribute("dayorder",dayorder);
+
+}%>
                     </tr>
                     </table>
-                    <% }
-                        } catch (Exception e) {
+                    <% 
+                      } catch (Exception e) {
                             System.out.println(e);
                         }
                     %>
                 </div>
                 <br><br>
                 <button type="submit" name="Change">Save Changes</button>
+                </form>
+                
             </div>
         </div>
     </body>

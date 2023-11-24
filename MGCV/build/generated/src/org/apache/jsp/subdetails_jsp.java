@@ -6,9 +6,10 @@ import javax.servlet.jsp.*;
 import java.util.*;
 import java.io.*;
 import java.sql.*;
+import java.text.*;
 import java.lang.*;
 
-public final class substitution_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class subdetails_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -51,7 +52,7 @@ public final class substitution_jsp extends org.apache.jasper.runtime.HttpJspBas
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
       out.write('\n');
- String file = "substitution";
+ String file = "subdetails";
       out.write(' ');
       out.write('\n');
       MGCVBean.MGCVBean db = null;
@@ -186,18 +187,11 @@ public final class substitution_jsp extends org.apache.jasper.runtime.HttpJspBas
       out.write("            }\n");
       out.write("\n");
       out.write("            .content form select {\n");
-      out.write("                font-size: 17px;\n");
+      out.write("                font-size: large;\n");
       out.write("                padding: 5px;\n");
       out.write("                border-radius: 5px;\n");
       out.write("                background-color: #fff;\n");
       out.write("                width: fit-content;\n");
-      out.write("            }\n");
-      out.write("            .content table select {\n");
-      out.write("                font-size: medium;\n");
-      out.write("                padding: 5px;\n");
-      out.write("                border-radius: 5px;\n");
-      out.write("                background-color: #fff;\n");
-      out.write("                width: 105%;\n");
       out.write("            }\n");
       out.write("\n");
       out.write("            .content form input[type=\"submit\"] {\n");
@@ -217,31 +211,12 @@ public final class substitution_jsp extends org.apache.jasper.runtime.HttpJspBas
       out.write("            .content form input[type=\"date\"] {\n");
       out.write("                border: 1px solid black;\n");
       out.write("                outline: none;\n");
-      out.write("                padding: 5px 20px;\n");
+      out.write("                padding: 6px 20px;\n");
       out.write("                cursor: pointer;\n");
       out.write("                font-size: medium;\n");
       out.write("                border-radius: 5px;\n");
       out.write("                margin-top: 40px;\n");
       out.write("            }\n");
-      out.write("            .content button {\n");
-      out.write("                border: none;\n");
-      out.write("                outline: none;\n");
-      out.write("                padding: 10px 10px;\n");
-      out.write("                cursor: pointer;\n");
-      out.write("                font-size: medium;\n");
-      out.write("                border-radius: 5px;\n");
-      out.write("                margin-top: 40px;\n");
-      out.write("                width: 11%;\n");
-      out.write("                position: center;\n");
-      out.write("                margin-left: 43%;\n");
-      out.write("                background-color: rgb(74, 177, 242);\n");
-      out.write("                color: #fff;\n");
-      out.write("            }\n");
-      out.write("            .content button:hover {\n");
-      out.write("                background-color: #1074d8;\n");
-      out.write("                color: aliceblue;\n");
-      out.write("            }\n");
-      out.write("\n");
       out.write("            table {\n");
       out.write("                border-collapse: collapse;\n");
       out.write("                width: 100%;\n");
@@ -260,10 +235,11 @@ public final class substitution_jsp extends org.apache.jasper.runtime.HttpJspBas
       out.write("                border-bottom: 1px solid #ddd;\n");
       out.write("                border-right: 1px solid #ddd;\n");
       out.write("            }\n");
-      out.write("\n");
+      out.write("             \n");
       out.write("            th {\n");
       out.write("                background-color: rgb(74, 177, 242);\n");
       out.write("                color: #fff;\n");
+      out.write("                position: sticky;\n");
       out.write("            }\n");
       out.write("\n");
       out.write("            tr:hover {\n");
@@ -300,10 +276,10 @@ public final class substitution_jsp extends org.apache.jasper.runtime.HttpJspBas
       out.write("                <h2><a href=\"dashboard.html\">MGCV</a></h2>\n");
       out.write("                <ul>\n");
       out.write("                    <li>\n");
-      out.write("                        <a href=\"classtt.jsp\"><i class=\"fas classtt\"></i>Class TT</a>\n");
+      out.write("\t\t\t<a href=\"classtt.jsp\"><i class=\"fas classtt\"></i>Class TT</a>\n");
       out.write("                    </li>\n");
       out.write("                    <li>\n");
-      out.write("                        <a href=\"teachertt.jsp\"><i class=\"fas teachertt\"></i>Teacher TT</a>\n");
+      out.write("\t\t\t<a href=\"teachertt.jsp\"><i class=\"fas teachertt\"></i>Teacher TT</a>\n");
       out.write("                    </li>\n");
       out.write("                    <li>\n");
       out.write("                        <a href=\"substitution.jsp\"><i class=\"fas substitution\"></i>Substitution</a>\n");
@@ -333,155 +309,98 @@ public final class substitution_jsp extends org.apache.jasper.runtime.HttpJspBas
       out.write("                </div>\n");
       out.write("                &nbsp; &nbsp;\n");
       out.write("                <h3 style=\"text-align: center; margin: 1vh 0;margin-top: 3vh;\">\n");
-      out.write("                    TEACHER SUBSTITUTION\n");
+      out.write("                    SUBSTITUTION DETAILS\n");
       out.write("                </h3>\n");
-      out.write("                <form action=\"substitution.jsp\" method=\"get\">\n");
-      out.write("                    <label for=\"teacher\">Select Teacher</label>&nbsp;\n");
-      out.write("                    <select name=\"teacher\" id=\"teacher\" required>\n");
-      out.write("\t    <option value=\"\">Select</option>\n");
-      out.write("            <option value=\"Ambika V K\" name=\"Ambika V K\">Ambika V K</option>\n");
-      out.write("            <option value=\"Ammaponnu P\" name=\"Ammaponnu P\">Ammaponnu P</option>\n");
-      out.write("            <option value=\"Bharanidaran R\" name=\"Bharanidaran R\">Bharanidaran R</option>\n");
-      out.write("            <option value=\"Kalpana T B\" name=\"Kalpana T\">Kalpana T B</option>\n");
-      out.write("            <option value=\"Karthikeyini A\" name=\"Karthikeyini A\">Karthikeyini A</option>\n");
-      out.write("            <option value=\"Kavitha J\" name=\"Kavitha J\">Kavitha J</option>\n");
-      out.write("            <option value=\"Kumudini S\" name=\"Kumudini S\">Kumudini S</option>\n");
-      out.write("            <option value=\"Manjula\" name=\"Manjula\">Manjula</option>\n");
-      out.write("            <option value=\"Mangayarthilagam R\" name=\"Mangayarthilagam R\">Mangayarthilagam R</option>\n");
-      out.write("            <option value=\"Sangeetha M\" name=\"Sangeetha M\">Sangeetha M</option>\n");
-      out.write("            <option value=\"Saradha K\" name=\"Saradha K\">Saradha K</option>\n");
-      out.write("            <option value=\"Sangeetha S\" name=\"Sangeetha S\">Sangeetha S</option>\n");
-      out.write("            <option value=\"Senbagavalli D\" name=\"Senbagavalli D\">Senbagavalli D</option>\n");
-      out.write("            <option value=\"Suganya S\" name=\"Suganya S\">Suganya S</option>\n");
-      out.write("            <option value=\"Vijayalakshmi R\" name=\"Vijayalakshmi R\">Vijayalakshmi R</option>\n");
-      out.write("            <option value=\"Pavai K\" name=\"Pavai K\">Pavai K</option>\n");
-      out.write("            <option value=\"Amudha\" name=\"Amudha\">Amudha</option>\n");
-      out.write("            <option value=\"Balasubramani D\" name=\"Balasubramani D\">Balasubramani D</option>\n");
-      out.write("            <option value=\"Deepika Jayapalu\" name=\"Deepika Jayapalu\">Deepika Jayapalu</option>\n");
-      out.write("            \n");
-      out.write("            \n");
-      out.write("        </select>\n");
-      out.write("                    &nbsp; &nbsp;\n");
+      out.write("                <form action=\"subdetails.jsp\" method=\"get\">\n");
       out.write("                    <label for=\"date\">Select Date</label>&nbsp;\n");
       out.write("                    <input type=\"date\" name=\"date\" required />\n");
-      out.write("                    &nbsp; &nbsp; \n");
-      out.write("                    <label for=\"dayorder\">Select Dayorder</label>&nbsp;\n");
-      out.write("                    <select name=\"dayorder\" id=\"dayorder\" required>\n");
-      out.write("                        <option value=\"\">Select</option>\n");
-      out.write("                        <option value=\"1\">1</option><option value=\"2\">2</option>\n");
-      out.write("                        <option value=\"3\">3</option><option value=\"4\">4</option>\n");
-      out.write("                        <option value=\"5\">5</option><option value=\"6\">6</option>\n");
-      out.write("                        \n");
-      out.write("                    </select>\n");
       out.write("                    &nbsp; &nbsp; &nbsp; &nbsp;\n");
-      out.write("                    <input type=\"submit\" value=\"Show Timetable\" name=\"submit\" />\n");
+      out.write("                    <input type=\"submit\" value=\"Get Details\" name=\"submit\" />\n");
       out.write("                </form>\n");
-      out.write("                \n");
       out.write("                ");
 
-                    String teacher = request.getParameter("teacher");
-                    String dayorder = request.getParameter("dayorder");
+                    String date = request.getParameter("date");
                     if (request.getParameter("submit") != null) {
 
-                
-      out.write("\n");
-      out.write("                <div style=\"margin-top: 4vh\">\n");
-      out.write("                    <h3 style=\"margin-bottom: 4vh\">");
-out.println("Teacher Name: "+teacher);
+
+      out.write(" <br>\n");
+      out.write("                <h3 style=\"margin-top: 1.5vh;\">");
+out.println("Date: " + date);
       out.write("</h3>\n");
-      out.write("                    \n");
+      out.write("                <div style=\"margin-top: 4.5vh;overflow-y: auto; height: 500px;\">\n");
+      out.write("                    ");
+
+                                String qry = "select * from subtt where dat='"+date+"'";
+                                Vector v = db.getData(stmt,qry,100,1);
+                                if(v.isEmpty()) {
+                                    
+      out.write("<h1>No Records Found</h1>");
+
+                                }
+                                else {
+                         
+      out.write("\n");
       out.write("                    <table>\n");
       out.write("                        <tr>\n");
+      out.write("                            <th>S.No.</th>\n");
+      out.write("                            <th>Date</th>\n");
       out.write("                            <th>DO.</th>\n");
-      out.write("                            <th>1<br />(time)</th>\n");
-      out.write("                            <th>2<br />(time)</th>\n");
-      out.write("                            <th>3<br />(time)</th>\n");
-      out.write("                            <th>4<br />(time)</th>\n");
-      out.write("                            <th>5<br />(time)</th>\n");
-      out.write("                            <th>6<br />(time)</th>\n");
-      out.write("                            <th>7<br />(time)</th>\n");
-      out.write("                            <th>8<br />(time)</th>\n");
+      out.write("                            <th>Period</th>\n");
+      out.write("                            <th>Class</th>\n");
+      out.write("                            <th>Section</th>\n");
+      out.write("                            <th>Actual Staff</th>\n");
+      out.write("                            <th>Substituted Staff</th>\n");
       out.write("                        </tr>\n");
-      out.write("                        <tr>\n");
-      out.write("                        <td>");
-out.println(dayorder);
+      out.write("                        ");
+ int sno=1;
+      out.write("\n");
+      out.write("                            ");
+
+                                int nr = db.getRows(v);
+                                int nc = db.getCols(v); 
+                                for(int i=1;i<=nc*nr;i+=nc)
+                                { 
+      out.write("\n");
+      out.write("                                <tr>\n");
+      out.write("                                    <td>");
+out.print(sno++);
       out.write("</td>\n");
-      out.write("            ");
-
-                String date = request.getParameter("date");
-                String period="";
-                for(int i=1;i<9;i++) {
-                String qry = " select cls,sec from timetable join teacher on teacher.teachermail=timetable.teachermail where teachername='"+teacher+"' and dayorder="+dayorder+" and period="+i+"";
-                Vector v = db.getData(stmt,qry,10,1);
-                if(v.contains("0"))
-                    period="-";
-                else 
-                    period = v.get(1)+" - "+(String)v.get(2);
-            
-      out.write("\n");
-      out.write("            <td>");
-out.println(period);
-             if (period!="-"){ 
-             qry = "SELECT teachername FROM timetable join teacher on timetable.teachermail=teacher.teachermail WHERE dayorder="+dayorder+" and period="+i+"and cls='10'";
-             ResultSet rs = stmt.executeQuery(qry);
-             Vector<String> name = new Vector<String>();
-             while(rs.next())
-                 name.add(rs.getString(1));
-             qry = "SELECT teachername FROM timetable join teacher on timetable.teachermail=teacher.teachermail WHERE dayorder="+dayorder+" and period="+i+"and cls='9'";
-             rs = stmt.executeQuery(qry);
-             while(rs.next())
-                  name.add(rs.getString(1));
-             qry = "select teachername from teacher";
-             Vector list = db.getData(stmt,qry,25,1);
-             Vector<String> namelist = new Vector<String>(); 
-             for(int k=1;k<list.size();k++)
-             {
-                 if(!(name.contains(list.get(k))))
-                    namelist.add((String)list.get(k)); 
-             } 
-      out.write("\n");
-      out.write("             <br><br>\n");
-      out.write("             <form action=\"sub.jsp\" method=\"post\">\n");
-      out.write("             <select name=\"sub\" id=\"teacher\"><option value=\"\">Select</option>\n");
-      out.write("            ");
- for(int k=1;k<namelist.size()-1;k++)
-             {
-      out.write("\n");
-      out.write("                 \n");
-      out.write("                     <option value=\"");
-      out.print(namelist.get(k));
-      out.write('"');
-      out.write('>');
-      out.print(namelist.get(k));
-      out.write("</option>\n");
-      out.write("         ");
-    }
-         
-            }} 
+      out.write("                                    <td>");
+      out.print(v.get(i));
       out.write("</td>\n");
-      out.write("             ");
-
-             
-    session.setAttribute("date",date);
-    session.setAttribute("actual", request.getParameter("teacher"));
-    session.setAttribute("dayorder",dayorder);
-
-}
-      out.write("\n");
-      out.write("                    </tr>\n");
-      out.write("                    </table>\n");
+      out.write("                                    <td>");
+      out.print(v.get(i+1));
+      out.write("</td>\n");
+      out.write("                                    <td>");
+      out.print(v.get(i+2));
+      out.write("</td>\n");
+      out.write("                                    <td>");
+      out.print(v.get(i+3));
+      out.write("</td>\n");
+      out.write("                                    <td>");
+      out.print(v.get(i+4));
+      out.write("</td>\n");
+      out.write("                                    <td>");
+      out.print(v.get(i+5));
+      out.write("</td>\n");
+      out.write("                                    <td>");
+      out.print(v.get(i+6));
+      out.write("</td>\n");
+      out.write("                                </tr>  \n");
+      out.write("                                ");
+       }
+                                
+      out.write("           \n");
+      out.write("        </table>\n");
       out.write("                    ");
- 
-                      } catch (Exception e) {
+ }
+}
+                        } catch (Exception e) {
                             System.out.println(e);
                         }
                     
       out.write("\n");
       out.write("                </div>\n");
-      out.write("                <br><br>\n");
-      out.write("                <button type=\"submit\" name=\"Change\">Save Changes</button>\n");
-      out.write("                </form>\n");
-      out.write("                \n");
       out.write("            </div>\n");
       out.write("        </div>\n");
       out.write("    </body>\n");

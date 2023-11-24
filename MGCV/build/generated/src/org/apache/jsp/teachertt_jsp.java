@@ -3,6 +3,10 @@ package org.apache.jsp;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
+import java.util.*;
+import java.io.*;
+import java.sql.*;
+import java.lang.*;
 
 public final class teachertt_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
@@ -10,6 +14,11 @@ public final class teachertt_jsp extends org.apache.jasper.runtime.HttpJspBase
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
 
   private static java.util.List<String> _jspx_dependants;
+
+  static {
+    _jspx_dependants = new java.util.ArrayList<String>(1);
+    _jspx_dependants.add("/mgcvdb.jsp");
+  }
 
   private org.glassfish.jsp.api.ResourceInjector _jspx_resourceInjector;
 
@@ -41,6 +50,56 @@ public final class teachertt_jsp extends org.apache.jasper.runtime.HttpJspBase
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
+      out.write('\n');
+ String file = "teachertt";
+      out.write(' ');
+      out.write('\n');
+      MGCVBean.MGCVBean db = null;
+      synchronized (_jspx_page_context) {
+        db = (MGCVBean.MGCVBean) _jspx_page_context.getAttribute("db", PageContext.PAGE_SCOPE);
+        if (db == null){
+          db = new MGCVBean.MGCVBean();
+          _jspx_page_context.setAttribute("db", db, PageContext.PAGE_SCOPE);
+        }
+      }
+      out.write('\n');
+ 
+   java.sql.Connection con=null; 
+   java.sql.Statement stmt=null;
+   //db.setLog(file+".log");
+   boolean oks = db.isDbcon();
+   if(!oks)
+   {
+       session.putValue("mes",db.getErr()+" - Database error....");
+
+      out.write('\n');
+      out.write('	');
+      if (true) {
+        _jspx_page_context.forward("error.jsp");
+        return;
+      }
+      out.write('\n');
+	   
+   }
+   con=db.getCon();
+   con.setAutoCommit(false);
+   stmt=con.createStatement();
+   if(stmt==null)
+   {
+       session.putValue("mes",db.getErr()+" - Database error");
+
+      out.write('\n');
+      if (true) {
+        _jspx_page_context.forward("error.jsp");
+        return;
+      }
+      out.write('\n');
+
+   } 
+
+      out.write('\n');
+      out.write("\n");
+      out.write("<!DOCTYPE html>\n");
       out.write("<html lang=\"en\">\n");
       out.write("\t<head>\n");
       out.write("\t\t<meta charset=\"UTF-8\" />\n");
@@ -49,6 +108,7 @@ public final class teachertt_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\t<link rel=\"icon\" type=\"image/jpg\" href=\"logo.jpg\" />\n");
       out.write("\t\t<style>\n");
       out.write("\t\t\t@import url(\"https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&family=Satisfy&display=swap\");\n");
+      out.write("                         @import url(\"https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap\");\n");
       out.write("\t\t\t* {\n");
       out.write("\t\t\t\tmargin: 0;\n");
       out.write("\t\t\t\tpadding: 0;\n");
@@ -179,6 +239,19 @@ public final class teachertt_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\t\ttr:nth-child(even) {\n");
       out.write("\t\t\t\tbackground-color: #f2f2f2;\n");
       out.write("\t\t\t}\n");
+      out.write("                        \n");
+      out.write("                        .widget-title {\n");
+      out.write("                font-weight: 900;\n");
+      out.write("                font-size: 30px;\n");
+      out.write("                font-family: \"Poppins\", \"Helvetica\", sans-serif;\n");
+      out.write("                text-align: center;\n");
+      out.write("            }\n");
+      out.write("\n");
+      out.write("            .widget-subtitle {\n");
+      out.write("                margin-top: 15px;\n");
+      out.write("                font-family: \"Poppins\", \"Helvetica\", sans-serif;\n");
+      out.write("                text-align: center;\n");
+      out.write("            }\n");
       out.write("\t\t</style>\n");
       out.write("\t</head>\n");
       out.write("<body>\n");
@@ -187,28 +260,39 @@ public final class teachertt_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\t\t<div class=\"sidebar\">\n");
       out.write("\t\t\t\t<h2>MGCV</h2>\n");
       out.write("\t\t\t\t<ul>\n");
-      out.write("\t\t\t\t\t<li>\n");
-      out.write("\t\t\t\t\t\t<a href=\"classtt.jsp\"\n");
-      out.write("\t\t\t\t\t\t\t><i class=\"fas classtt\"></i>Class TT</a\n");
-      out.write("\t\t\t\t\t\t>\n");
-      out.write("\t\t\t\t\t</li>\n");
-      out.write("\t\t\t\t\t<li>\n");
-      out.write("\t\t\t\t\t\t<a href=\"teachertt.jsp\"\n");
-      out.write("\t\t\t\t\t\t\t><i class=\"fas teachertt\"></i>Teacher</a\n");
-      out.write("\t\t\t\t\t\t>\n");
-      out.write("\t\t\t\t\t</li>\n");
+      out.write("\t\t\t\t<li>\n");
+      out.write("\t\t\t\t\t<a href=\"classtt.jsp\"><i class=\"fas classtt\"></i>Class TT</a>\n");
+      out.write("\t\t\t\t</li>\n");
+      out.write("\t\t\t\t<li>\n");
+      out.write("\t\t\t\t\t<a href=\"teachertt.jsp\"><i class=\"fas teachertt\"></i>Teacher</a>\n");
+      out.write("\t\t\t\t</li>\n");
+      out.write("                                <li>\n");
+      out.write("                                        <a href=\"substitution.jsp\"><i class=\"fas substitution\"></i>Substitution</a>\n");
+      out.write("                                </li>\n");
+      out.write("                                <li>\n");
+      out.write("                                        <a href=\"index.html\"><i class=\"fas index\"></i>Logout</a>\n");
+      out.write("                                </li>\n");
       out.write("\t\t\t\t</ul>\n");
       out.write("\t\t\t</div>\n");
       out.write("\t\t</div>\n");
       out.write("\t\t<div id=\"content-section\">\n");
       out.write("\t\t\t<div class=\"content\" style=\"background-color: #fff\">\n");
-      out.write("\t\t\t\t<h2 style=\"text-align: center\">\n");
-      out.write("\t\t\t\t\tMahatma Gandhi Centenary Vidyalaya\n");
-      out.write("\t\t\t\t</h2>\n");
-      out.write("\t\t\t\t&nbsp; &nbsp;\n");
-      out.write("\t\t\t\t<h3 style=\"text-align: center; margin: 1vh 0\">\n");
-      out.write("\t\t\t\t\tCLASS TIME TABLE\n");
-      out.write("\t\t\t\t</h3>\n");
+      out.write("\t\t\t\t<div class=\"mb70 mb-xs-40 text-center\">\n");
+      out.write("                    <h5 style=\"color: #1e73be !important\" class=\"widget-title\">\n");
+      out.write("                        Mahatma Gandhi Centenary Vidyalaya\n");
+      out.write("                    </h5>\n");
+      out.write("                    <div\n");
+      out.write("                        style=\"color: #000000 !important\"\n");
+      out.write("                        class=\"widget-subtitle\"\n");
+      out.write("                        >\n");
+      out.write("                        No.35,Tennur High Road,Tiruchirappali - 620017,Phone :\n");
+      out.write("                        0431 - 2792666,Email ID : office@mgcvschool.ac.in\n");
+      out.write("                    </div>\n");
+      out.write("                </div>\n");
+      out.write("                &nbsp; &nbsp;\n");
+      out.write("                <h3 style=\"text-align: center; margin: 1vh 0\">\n");
+      out.write("                    TEACHER TIME TABLE\n");
+      out.write("                </h3>\n");
       out.write("        \n");
       out.write("    <form action=\"#\" method=\"get\">\n");
       out.write("        \n");
@@ -264,55 +348,35 @@ out.println("Teacher Name: "+teachername);
       out.write("            <th>5<br>(time)</th><th>6<br>(time)</th>\n");
       out.write("            <th>7<br>(time)</th><th>8<br>(time)</th>  \n");
       out.write("        </tr>\n");
+      out.write("        ");
+ for(int j=1;j<7;j++) { 
+      out.write("\n");
       out.write("         <tr>\n");
-      out.write("            <td>1</td>\n");
-      out.write("            <td>-</td><td>10-A</td>\n");
-      out.write("            <td>9-B</td><td>8-D</td>\n");
-      out.write("            <td>-</td><td>-</td>\n");
-      out.write("            <td>7-B</td><td>10-A</td>\n");
-      out.write("            \n");
+      out.write("         <td>");
+ out.println(j); 
+      out.write("</td>\n");
+      out.write("            ");
+
+                String period="";
+                for(int i=1;i<9;i++) {
+                String qry = " select cls,sec from timetable join teacher on teacher.teachermail=timetable.teachermail where teachername='"+teachername+"' and dayorder="+j+" and period="+i+"";
+                Vector v = db.getData(stmt,qry,10,1);
+                if(v.contains("0"))
+                    period="-";
+                else
+                    period = v.get(1)+" - "+(String)v.get(2);
+            
+      out.write("\n");
+      out.write("            <td>");
+out.println(period);
+      out.write("</td>\n");
+      out.write("            ");
+ } 
+      out.write("\n");
       out.write("        </tr>\n");
-      out.write("        <tr>\n");
-      out.write("            <td>2</td>\n");
-      out.write("            <td>7-B</td><td>10-A</td>\n");
-      out.write("            <td>-</td><td>10-A</td>\n");
-      out.write("            <td>9-B</td><td>8-D</td>\n");
-      out.write("            <td>-</td><td>-</td>\n");
-      out.write("            \n");
-      out.write("            \n");
-      out.write("        </tr>\n");
-      out.write("        <tr>\n");
-      out.write("            <td>3</td>\n");
-      out.write("            <td>-</td><td>10-A</td>\n");
-      out.write("            <td>-</td><td>-</td>\n");
-      out.write("            <td>7-B</td><td>10-A</td>\n");
-      out.write("            <td>9-B</td><td>8-D</td>\n");
-      out.write("            \n");
-      out.write("        </tr>\n");
-      out.write("        <tr>\n");
-      out.write("            <td>4</td>\n");
-      out.write("            <td>9-B</td><td>8-D</td>\n");
-      out.write("            <td>7-B</td><td>10-A</td>\n");
-      out.write("            <td>-</td><td>10-A</td>\n");
-      out.write("            <td>-</td><td>-</td>\n");
-      out.write("            \n");
-      out.write("        </tr><tr>\n");
-      out.write("            <td>5</td>\n");
-      out.write("            <td>-</td><td>10-A</td>\n");
-      out.write("            <td>-</td><td>-</td>\n");
-      out.write("            <td>9-B</td><td>8-D</td>\n");
-      out.write("            <td>7-B</td><td>10-A</td>\n");
-      out.write("            \n");
-      out.write("        </tr>\n");
-      out.write("        <tr>\n");
-      out.write("            <td>6</td>\n");
-      out.write("            <td>-</td><td>10-A</td>\n");
-      out.write("            <td>7-B</td><td>10-A</td>\n");
-      out.write("            <td>9-B</td><td>8-D</td>\n");
-      out.write("            <td>-</td><td>-</td>\n");
-      out.write("            \n");
-      out.write("            \n");
-      out.write("        </tr>\n");
+      out.write("        ");
+ } 
+      out.write("\n");
       out.write("    </table>\n");
       out.write("    ");
  }

@@ -1,5 +1,5 @@
-<%@ page import="java.util.*,java.io.*,java.sql.*,java.lang.*" %>
-<% String file = "substitution";%> 
+<%@ page import="java.util.*,java.io.*,java.sql.*,java.text.*,java.lang.*" %>
+<% String file = "subdetails";%> 
 <%@ include file="mgcvdb.jsp"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -85,22 +85,14 @@
                 font-family: "Helvetica";
                 font-size: large;
                 font-weight: bold;
-                margin-top: -1vh;
             }
 
             .content form select {
-                font-size: 17px;
+                font-size: large;
                 padding: 5px;
                 border-radius: 5px;
                 background-color: #fff;
                 width: fit-content;
-            }
-            .content table select {
-                font-size: medium;
-                padding: 5px;
-                border-radius: 5px;
-                background-color: #fff;
-                width: 105%;
             }
 
             .content form input[type="submit"] {
@@ -120,31 +112,12 @@
             .content form input[type="date"] {
                 border: 1px solid black;
                 outline: none;
-                padding: 5px 20px;
+                padding: 6px 20px;
                 cursor: pointer;
                 font-size: medium;
                 border-radius: 5px;
                 margin-top: 40px;
             }
-            .content button {
-                border: none;
-                outline: none;
-                padding: 10px 10px;
-                cursor: pointer;
-                font-size: medium;
-                border-radius: 5px;
-                margin-top: 40px;
-                width: 11%;
-                position: center;
-                margin-left: 43%;
-                background-color: rgb(74, 177, 242);
-                color: #fff;
-            }
-            .content button:hover {
-                background-color: #1074d8;
-                color: aliceblue;
-            }
-
             table {
                 border-collapse: collapse;
                 width: 100%;
@@ -163,10 +136,11 @@
                 border-bottom: 1px solid #ddd;
                 border-right: 1px solid #ddd;
             }
-
+             
             th {
                 background-color: rgb(74, 177, 242);
                 color: #fff;
+                position: sticky;
             }
 
             tr:hover {
@@ -201,10 +175,10 @@
                 <h2><a href="dashboard.html">MGCV</a></h2>
                 <ul>
                     <li>
-                        <a href="classtt.jsp"><i class="fas classtt"></i>Class TT</a>
+			<a href="classtt.jsp"><i class="fas classtt"></i>Class TT</a>
                     </li>
                     <li>
-                        <a href="teachertt.jsp"><i class="fas teachertt"></i>Teacher TT</a>
+			<a href="teachertt.jsp"><i class="fas teachertt"></i>Teacher TT</a>
                     </li>
                     <li>
                         <a href="substitution.jsp"><i class="fas substitution"></i>Substitution</a>
@@ -234,132 +208,59 @@
                 </div>
                 &nbsp; &nbsp;
                 <h3 style="text-align: center; margin: 1vh 0;margin-top: 3vh;">
-                    TEACHER SUBSTITUTION
+                    SUBSTITUTION DETAILS
                 </h3>
-                <form action="substitution.jsp" method="get">
-                    <label for="teacher">Select Teacher</label>&nbsp;
-                    <select name="teacher" id="teacher" required>
-	    <option value="">Select</option>
-            <option value="Ambika V K" name="Ambika V K">Ambika V K</option>
-            <option value="Ammaponnu P" name="Ammaponnu P">Ammaponnu P</option>
-            <option value="Bharanidaran R" name="Bharanidaran R">Bharanidaran R</option>
-            <option value="Kalpana T B" name="Kalpana T">Kalpana T B</option>
-            <option value="Karthikeyini A" name="Karthikeyini A">Karthikeyini A</option>
-            <option value="Kavitha J" name="Kavitha J">Kavitha J</option>
-            <option value="Kumudini S" name="Kumudini S">Kumudini S</option>
-            <option value="Manjula" name="Manjula">Manjula</option>
-            <option value="Mangayarthilagam R" name="Mangayarthilagam R">Mangayarthilagam R</option>
-            <option value="Sangeetha M" name="Sangeetha M">Sangeetha M</option>
-            <option value="Saradha K" name="Saradha K">Saradha K</option>
-            <option value="Sangeetha S" name="Sangeetha S">Sangeetha S</option>
-            <option value="Senbagavalli D" name="Senbagavalli D">Senbagavalli D</option>
-            <option value="Suganya S" name="Suganya S">Suganya S</option>
-            <option value="Vijayalakshmi R" name="Vijayalakshmi R">Vijayalakshmi R</option>
-            <option value="Pavai K" name="Pavai K">Pavai K</option>
-            <option value="Amudha" name="Amudha">Amudha</option>
-            <option value="Balasubramani D" name="Balasubramani D">Balasubramani D</option>
-            <option value="Deepika Jayapalu" name="Deepika Jayapalu">Deepika Jayapalu</option>
-            
-            
-        </select>
-                    &nbsp; &nbsp;
+                <form action="subdetails.jsp" method="get">
                     <label for="date">Select Date</label>&nbsp;
                     <input type="date" name="date" required />
-                    &nbsp; &nbsp; 
-                    <label for="dayorder">Select Dayorder</label>&nbsp;
-                    <select name="dayorder" id="dayorder" required>
-                        <option value="">Select</option>
-                        <option value="1">1</option><option value="2">2</option>
-                        <option value="3">3</option><option value="4">4</option>
-                        <option value="5">5</option><option value="6">6</option>
-                        
-                    </select>
                     &nbsp; &nbsp; &nbsp; &nbsp;
-                    <input type="submit" value="Show Timetable" name="submit" />
+                    <input type="submit" value="Get Details" name="submit" />
                 </form>
-                
                 <%
-                    String teacher = request.getParameter("teacher");
-                    String dayorder = request.getParameter("dayorder");
+                    String date = request.getParameter("date");
                     if (request.getParameter("submit") != null) {
 
-                %>
-                <div style="margin-top: 4vh">
-                    <h3 style="margin-bottom: 4vh"><%out.println("Teacher Name: "+teacher);%></h3>
-                    
-                    <table style="margin-top: 5vh;">
+%> <br>
+                <h3 style="margin-top: 1.5vh;"><%out.println("Date: " + date);%></h3>
+                <div style="margin-top: 4.5vh;overflow-y: auto; height: 500px;">
+                    <table>
                         <tr>
+                            <th>S.No.</th>
+                            <th>Date</th>
                             <th>DO.</th>
-                            <th>1<br />(time)</th>
-                            <th>2<br />(time)</th>
-                            <th>3<br />(time)</th>
-                            <th>4<br />(time)</th>
-                            <th>5<br />(time)</th>
-                            <th>6<br />(time)</th>
-                            <th>7<br />(time)</th>
-                            <th>8<br />(time)</th>
+                            <th>Period</th>
+                            <th>Class</th>
+                            <th>Section</th>
+                            <th>Actual Staff</th>
+                            <th>Substituted Staff</th>
                         </tr>
-                        <tr>
-                        <td><%out.println(dayorder);%></td>
-            <%
-                String date = request.getParameter("date");
-                String period="";
-                for(int i=1;i<9;i++) {
-                String qry = " select cls,sec from timetable join teacher on teacher.teachermail=timetable.teachermail where teachername='"+teacher+"' and dayorder="+dayorder+" and period="+i+"";
-                Vector v = db.getData(stmt,qry,10,1);
-                if(v.contains("0"))
-                    period="-";
-                else 
-                    period = v.get(1)+" - "+(String)v.get(2);
-            %>
-            <td><%out.println(period);
-             if (period!="-"){ 
-             qry = "SELECT teachername FROM timetable join teacher on timetable.teachermail=teacher.teachermail WHERE dayorder="+dayorder+" and period="+i+"and cls='10'";
-             ResultSet rs = stmt.executeQuery(qry);
-             Vector<String> name = new Vector<String>();
-             while(rs.next())
-                 name.add(rs.getString(1));
-             qry = "SELECT teachername FROM timetable join teacher on timetable.teachermail=teacher.teachermail WHERE dayorder="+dayorder+" and period="+i+"and cls='9'";
-             rs = stmt.executeQuery(qry);
-             while(rs.next())
-                  name.add(rs.getString(1));
-             qry = "select teachername from teacher";
-             Vector list = db.getData(stmt,qry,25,1);
-             Vector<String> namelist = new Vector<String>(); 
-             for(int k=1;k<list.size();k++)
-             {
-                 if(!(name.contains(list.get(k))))
-                    namelist.add((String)list.get(k)); 
-             } %>
-             <br><br>
-             <form action="sub.jsp" method="post">
-             <select name="sub" id="teacher"><option value="">Select</option>
-            <% for(int k=1;k<namelist.size()-1;k++)
-             {%>
-                 
-                     <option value="<%=namelist.get(k)%>"><%=namelist.get(k)%></option>
-         <%    }
-         
-            }} %></td>
-             <%
-             
-    session.setAttribute("date",date);
-    session.setAttribute("actual", request.getParameter("teacher"));
-    session.setAttribute("dayorder",dayorder);
-
-}%>
-                    </tr>
-                    </table>
-                    <% 
-                      } catch (Exception e) {
+                        <% int sno=1;%>
+                            <%
+                                String qry = "select * from subtt where dat='"+date+"'";
+                                Vector v = db.getData(stmt,qry,100,1);
+                                int nr = db.getRows(v);
+                                int nc = db.getCols(v); 
+                                for(int i=1;i<=nc*nr;i+=nc)
+                                { %>
+                                <tr>
+                                    <td><%out.print(sno++);%></td>
+                                    <td><%=v.get(i)%></td>
+                                    <td><%=v.get(i+1)%></td>
+                                    <td><%=v.get(i+2)%></td>
+                                    <td><%=v.get(i+3)%></td>
+                                    <td><%=v.get(i+4)%></td>
+                                    <td><%=v.get(i+5)%></td>
+                                    <td><%=v.get(i+6)%></td>
+                                </tr>  
+                                <%       }
+                                %>           
+        </table>
+                    <% }
+                        } catch (Exception e) {
                             System.out.println(e);
                         }
                     %>
                 </div>
-                <br><br>
-                <button type="submit" name="Change">Save Changes</button>
-                </form>
-                
             </div>
         </div>
     </body>
