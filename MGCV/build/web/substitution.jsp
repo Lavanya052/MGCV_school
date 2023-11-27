@@ -264,14 +264,14 @@
         </select>
                     &nbsp; &nbsp;
                     <label for="date">Select Date</label>&nbsp;
-                    <input type="date" name="date" required />
+                    <input type="date" id="date" name="date" value="" required> 
                     &nbsp; &nbsp; 
-                    <label for="dayorder">Select Dayorder</label>&nbsp;
-                    <select name="dayorder" id="dayorder" required>
+                    <label for="dayorder">Select Day</label>&nbsp;
+                    <select name="dayorder" id="day" required>
                         <option value="">Select</option>
-                        <option value="1">1</option><option value="2">2</option>
-                        <option value="3">3</option><option value="4">4</option>
-                        <option value="5">5</option><option value="6">6</option>
+                        <option value="1">Monday</option><option value="2">Tuesday</option>
+                        <option value="3">Wednesday</option><option value="4">Thursday</option>
+                        <option value="5">Friday</option><option value="6">Saturday</option>
                         
                     </select>
                     &nbsp; &nbsp; &nbsp; &nbsp;
@@ -362,5 +362,12 @@
                 
             </div>
         </div>
+                <script>var today = new Date(); 
+var dd = String(today.getDate()).padStart(2, '0'); 
+var mm = String(today.getMonth() + 1).padStart(2, '0'); 
+var yyyy = today.getFullYear(); 
+ 
+today = yyyy + '-' + mm + '-' + dd; 
+document.getElementById('date').value = today; </script>
     </body>
 </html>

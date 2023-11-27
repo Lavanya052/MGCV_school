@@ -313,7 +313,7 @@ public final class subdetails_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                </h3>\n");
       out.write("                <form action=\"subdetails.jsp\" method=\"get\">\n");
       out.write("                    <label for=\"date\">Select Date</label>&nbsp;\n");
-      out.write("                    <input type=\"date\" name=\"date\" required />\n");
+      out.write("                    <input type=\"date\" onload=\"getDate()\" class=\"form-control\" id=\"date\" name=\"date\" required/>\n");
       out.write("                    &nbsp; &nbsp; &nbsp; &nbsp;\n");
       out.write("                    <input type=\"submit\" value=\"Get Details\" name=\"submit\" />\n");
       out.write("                </form>\n");
@@ -328,18 +328,6 @@ public final class subdetails_jsp extends org.apache.jasper.runtime.HttpJspBase
 out.println("Date: " + date);
       out.write("</h3>\n");
       out.write("                <div style=\"margin-top: 4.5vh;overflow-y: auto; height: 500px;\">\n");
-      out.write("                    ");
-
-                                String qry = "select * from subtt where dat='"+date+"'";
-                                Vector v = db.getData(stmt,qry,100,1);
-                                if(v.isEmpty()) {
-                                    
-      out.write("<h1>No Records Found</h1>");
-
-                                }
-                                else {
-                         
-      out.write("\n");
       out.write("                    <table>\n");
       out.write("                        <tr>\n");
       out.write("                            <th>S.No.</th>\n");
@@ -356,6 +344,8 @@ out.println("Date: " + date);
       out.write("\n");
       out.write("                            ");
 
+                                String qry = "select * from subtt where dat='"+date+"'";
+                                Vector v = db.getData(stmt,qry,100,1);
                                 int nr = db.getRows(v);
                                 int nc = db.getCols(v); 
                                 for(int i=1;i<=nc*nr;i+=nc)
@@ -394,7 +384,6 @@ out.print(sno++);
       out.write("        </table>\n");
       out.write("                    ");
  }
-}
                         } catch (Exception e) {
                             System.out.println(e);
                         }
@@ -403,7 +392,8 @@ out.print(sno++);
       out.write("                </div>\n");
       out.write("            </div>\n");
       out.write("        </div>\n");
-      out.write("    </body>\n");
+      out.write("    <script>document.getElementById(\"date\").value = new Date().toLocaleDateString(); </script>\n");
+      out.write("</body>\n");
       out.write("</html>");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){

@@ -212,7 +212,7 @@
                 </h3>
                 <form action="subdetails.jsp" method="get">
                     <label for="date">Select Date</label>&nbsp;
-                    <input type="date" name="date" required />
+                    <input type="date" id="date" name="date" value="" required> 
                     &nbsp; &nbsp; &nbsp; &nbsp;
                     <input type="submit" value="Get Details" name="submit" />
                 </form>
@@ -227,7 +227,7 @@
                         <tr>
                             <th>S.No.</th>
                             <th>Date</th>
-                            <th>DO.</th>
+                            <th>Day</th>
                             <th>Period</th>
                             <th>Class</th>
                             <th>Section</th>
@@ -263,5 +263,12 @@
                 </div>
             </div>
         </div>
-    </body>
+    <script>var today = new Date(); 
+var dd = String(today.getDate()).padStart(2, '0'); 
+var mm = String(today.getMonth() + 1).padStart(2, '0'); 
+var yyyy = today.getFullYear(); 
+ 
+today = yyyy + '-' + mm + '-' + dd; 
+document.getElementById('date').value = today;  </script>
+</body>
 </html>
