@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>MGCV</title>
+		<link rel="stylesheet" href="styles.css" />
+                <style>
+                    @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&family=Satisfy&display=swap");
+                    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap");
+
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                list-style: none;
+                text-decoration: none;
+                font-family: "Roboto", sans-serif;
+            }
+                #content-section {
+                margin-left: 15%;
+                height: 100vh;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .content {
+                height: 100vh;
+                padding: 2%;
+                margin-top: -10px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .content h2 {
+                margin: 2vh 0;
+            }
+
+            .content img {
+                width: 30%;
+                margin-top: 15vh;
+                margin-left: -20%;
+            }
+            .widget-title {
+                font-weight: 750;
+                font-size: 25px;
+                font-family: "Poppins", "Helvetica", "sans-serif";
+                text-align: center;
+                color: white;
+            }
+            .title{
+                margin-left: 10.2%;
+                margin-top: 2px;
+            }
+                </style>
+	</head>
+	<body onload="preventNavigation()">
+            <div id="content-section">
+            <div class="content" style="background-color: #fff">
+                <nav>
+			<ul>
+                                <li><a href="dashboard.html">Home</a></li>
+				<li class="dropdown">
+					<a href="#" class="dropbtn">Time Table</a>
+					<div class="dropdown-content">
+						<a href="classtt.jsp">Class TT</a>
+						<a href="teachertt.jsp">Teacher TT</a>
+					</div>
+				</li>
+				<li class="dropdown">
+					<a href="#" class="dropbtn">Update TT</a>
+					<div class="dropdown-content">
+						<a href="clsedit.jsp">Class TT</a>
+						<a href="teachedit.jsp">Teacher TT</a>
+					</div>
+				</li>
+				<li class="dropdown">
+					<a href="#" class="dropbtn">Substitution</a>
+					<div class="dropdown-content">
+						<a href="substitution.jsp">Add Substitution</a>
+						<a href="subdetails.jsp">Substitution Details</a>
+					</div>
+				</li>
+				<li><a href="index.html">Logout</a></li>
+                                <div class="title">
+                                <li><h5  class="widget-title">
+                        Mahatma Gandhi Centenary Vidyalaya, Trichy - 620017
+                    </h5></li>
+                                </div>
+			</ul>
+		</nav>
+                <img src="logo1.jpg"/>
+            </div>
+        </div>
+	</body>
+</html>
